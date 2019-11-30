@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class Node
 {
+    [SerializeField]
     public int GridX; // X position in the Array of Nodes
+    [SerializeField]
     public int GridY; // Y position in the Array of Nodes
 
     public bool IsWalkable;

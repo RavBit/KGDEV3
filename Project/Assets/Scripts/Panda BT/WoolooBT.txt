@@ -1,2 +1,4 @@
 tree("Root")
-	Succeed
+	tree "CalcEnd"
+tree("CalcEnd")
+	GetEndPosition

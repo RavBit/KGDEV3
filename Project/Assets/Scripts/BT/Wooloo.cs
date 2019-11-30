@@ -1,18 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Panda;
 public class Wooloo : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public List<Node> Paths;
+
+    private void Awake()
     {
-        
+        GetComponent<PandaBehaviour>().Tick();
+    }
+    [Task]
+    public void GetEndPosition()
+    {
+        Vector3 target = new Vector3(Random.Range(-3, 3), 0, Random.Range(-3, 3));
+        Pathfinding.instance.FindPath(transform.position, target);
+        Paths = Pathfinding.instance.PublicPath;
+        Debug.Log("Finished");
+    }
+    [Task]
+    public void Walking()
+    {
+
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

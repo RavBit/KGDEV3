@@ -5,30 +5,33 @@ using UnityEngine;
 public class Pathfinding : MonoBehaviour
 {
     private Grid grid;
-    public Transform StartPosition;
-    public Transform TargetPosition;
+    private List<Node> finalPath;
+    public static Pathfinding instance;
 
-    private void Awake()
+    void Awake()
     {
         grid = GetComponent<Grid>();
+        if (instance != null)
+            Debug.LogError("More than one Pathfinding in scene");
+        else
+            instance = this;
     }
 
-    private void Update()
+    public void FindPath(Vector3 a_StartPosition, Vector3 a_TargetPosition)
     {
-        FindPath(StartPosition.position, TargetPosition.position);
-    }
+        Debug.Log("Start position: " + a_StartPosition + " / " + a_TargetPosition);
 
-    private void FindPath(Vector3 a_StartPosition, Vector3 a_TargetPosition)
-    {
         Node StartNode = grid.NodeFromWorldPostion(a_StartPosition);
         Node TargetNode = grid.NodeFromWorldPostion(a_TargetPosition);
 
+        Debug.Log("Startnode: " + StartNode.Position + " / " + TargetNode.Position);
+
         List<Node> OpenList = new List<Node>();
         HashSet<Node> ClosedList = new HashSet<Node>();
-
         OpenList.Add(StartNode);
 
-        while(OpenList.Count > 0)
+
+        while (OpenList.Count > 0)
         {
             Node CurrentNode = OpenList[0];
             for (int i = 1; i < OpenList.Count; i++)//Loop through the open list starting from the second object
@@ -81,8 +84,18 @@ public class Pathfinding : MonoBehaviour
         }
 
         FinalPath.Reverse();
-
+        finalPath = new List<Node>();
+        finalPath = FinalPath;
         grid.FinalPath = FinalPath;
+    }
+
+
+    public List<Node> PublicPath
+    {
+        get
+        {
+            return finalPath;
+        }
     }
 
     int GetManhattenDistance(Node a_NodeA, Node a_NodeB)

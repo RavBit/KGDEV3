@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 348986679169364525}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3228716918551895443}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RToe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6823070500605128418}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffHorn01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -104,7 +104,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8185620109499551775}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RHair4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 830324284526651070}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffEye02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,7 +166,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6753121271315250272}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LToe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8026346839077021208}
   - component: {fileID: 8092233564983161693}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pm0911_00_00_TailSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -282,7 +282,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5791190179657785584}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FeelerE
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -312,7 +312,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5075064830615217730}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffFront01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -343,7 +343,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7801672919551511767}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffFoot04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -374,7 +374,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3957098395908476847}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Feeler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -404,7 +404,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5624148851120292821}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -435,7 +435,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 480688455417918765}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,7 +466,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4067417867767292384}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffFoot02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -497,7 +497,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8848235274605614418}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RForeArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +529,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2197395988097291772}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CorrectionPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -565,7 +565,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 867072715574651286}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -596,7 +596,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3302203349440086538}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffGcloud01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,7 +626,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8493580885954655776}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -657,7 +657,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7656969478753826515}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LShoulder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -688,7 +688,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8224701977400686716}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Origin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -721,7 +721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3378660022877813740}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FeelerA
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -751,7 +751,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8838738106560599487}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +782,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 768268816696077226}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FeelerC
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -812,7 +812,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2662043980547104452}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pm0911_00_00_HairSkin 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -842,7 +842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5533082703604757150}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: REar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -872,7 +872,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6282144274965924348}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffMouth01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -903,7 +903,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8284391251474434156}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Waist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -936,7 +936,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2894369510012920966}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FeelerD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -966,7 +966,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5834949688771830511}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LHair3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -999,7 +999,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9212370081592143288}
   - component: {fileID: 5413068689605029321}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pm0911_00_00_HairSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1087,7 +1087,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2416412030179104650}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LHand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1118,7 +1118,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5344797153568057704}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffCenter01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1149,7 +1149,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8493209368827875193}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pm0911_00_00_HeadSkin 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1179,7 +1179,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6743035213518779686}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LHair1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1210,7 +1210,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4512773238290519676}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffShoot01_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1240,7 +1240,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5400801674858368929}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffFoot03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1271,7 +1271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7532226707826597188}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Neck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1305,7 +1305,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2368649399904232318}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pm0911_00_00
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1342,7 +1342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2753799091030398218}
   - component: {fileID: 3897447226073685266}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pm0911_00_00_HeadSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1427,7 +1427,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 750180560804326850}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tail1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1458,7 +1458,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8243503969271054624}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffOverHead01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1489,7 +1489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3264004361727561804}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RLeg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1520,7 +1520,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5845534855255488668}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1551,7 +1551,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5897897191324725945}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffHorn02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1582,7 +1582,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2468017151985761233}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1617,7 +1617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3809279136983112291}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pm0911_00_00_TailSkin 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1647,7 +1647,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7974637257305953153}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RHair3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1679,7 +1679,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2609858873582168649}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RHair2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1710,7 +1710,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1134358656055587093}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffTail01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1741,7 +1741,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5524658419181341291}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FeelerB
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1771,7 +1771,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5277101282278058582}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LThigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1803,7 +1803,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6987460736623333664}
   - component: {fileID: 402089308077222743}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pm0911_00_00_BodySkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1898,7 +1898,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1628052474204761801}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LEar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1928,7 +1928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2142318298228163294}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LHair4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1959,7 +1959,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 707031262468832268}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2002,7 +2002,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2355316712369839827}
   - component: {fileID: 32278876397937571}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pm0911_00_00_LegSkin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2096,7 +2096,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2315663559269220043}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffFoot01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2127,7 +2127,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1440955986786128079}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Spine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2164,7 +2164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4675769328289175057}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Tail2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2195,7 +2195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2770683559398735303}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pm0911_00_00_BodySkin 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2228,7 +2228,8 @@ GameObject:
   - component: {fileID: 3859038479959378379}
   - component: {fileID: 3565955073724913375}
   - component: {fileID: 5977964594094430349}
-  m_Layer: 0
+  - component: {fileID: 8460816224185747940}
+  m_Layer: 9
   m_Name: Wooloo_AI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2243,8 +2244,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7881111419138643618}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.187, y: 0.084, z: -2.196}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2197395988097291772}
   m_Father: {fileID: 0}
@@ -2283,9 +2284,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scripts:
   - {fileID: 4900000, guid: 2e31a614d6925c643aa3ee35278cc55a, type: 3}
-  autoReset: 1
-  tickOn: 0
+  - {fileID: 0}
+  autoReset: 0
+  tickOn: 3
   sourceInfos:
+  - isFoldout: 1
+    breakPoints: 
+    breakPointStatuses: 
+    collapsedLines: 
+    btScript: 
   - isFoldout: 1
     breakPoints: 
     breakPointStatuses: 
@@ -2303,6 +2310,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5f622d538296404dbc20a7781c70991, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Paths: []
+--- !u!65 &8460816224185747940
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881111419138643618}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7888843564327078183
 GameObject:
   m_ObjectHideFlags: 0
@@ -2312,7 +2333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4016774991247118821}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RThigh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2343,7 +2364,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3631573364667970095}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffHeadCenter01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2374,7 +2395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1391617944470117989}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RHair1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2405,7 +2426,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8990732834060941002}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffAttack01_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2436,7 +2457,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9024186995217313264}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: EffEye01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2467,7 +2488,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1011914492891141142}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LFoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2498,7 +2519,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3989926233526416444}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: pm0911_00_00_LegSkin 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2528,7 +2549,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3664769676228239257}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FeelerF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2558,7 +2579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3412721145087221734}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LHair2
   m_TagString: Untagged
   m_Icon: {fileID: 0}

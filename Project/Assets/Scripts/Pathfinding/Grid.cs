@@ -26,6 +26,14 @@ public class Grid : MonoBehaviour
         CreateGrid();
     }
 
+    private void Update()
+    {
+        if(grid != null)
+        {
+            UpdateGrid();
+        }
+    }
+
     private void CreateGrid()
     {
         grid = new Node[gridSizeX, gridSizeY];
@@ -44,6 +52,22 @@ public class Grid : MonoBehaviour
                 }
 
                 grid[x, y] = new Node(Wall, worldPoint, x, y);
+            }
+        }
+    }
+
+
+    private void UpdateGrid()
+    {
+        foreach (Node node in grid)
+        {
+            if(Physics.CheckSphere(node.Position, NodeRadius, WallMask))
+            {
+                node.IsWalkable = false;
+            }
+            else
+            {
+                node.IsWalkable = true;
             }
         }
     }
@@ -111,13 +135,12 @@ public class Grid : MonoBehaviour
         int x = Mathf.RoundToInt((gridSizeX - 1) * xpoint);
         int y = Mathf.RoundToInt((gridSizeY - 1) * ypoint);
 
-        return grid[x, y];
+        return grid[y, x];
 
     }
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(GridWorldSize.x, 1, GridWorldSize.y));
-
         if (grid != null)//If the grid is not empty
         {
             foreach (Node n in grid)//Loop through every node in the grid
