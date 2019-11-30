@@ -54,7 +54,7 @@ public class Pathfinding : MonoBehaviour
                 }
                 int MoveCost = CurrentNode.GCost + GetManhattenDistance(CurrentNode, NeighborNode);
 
-                if(MoveCost < NeighborNode.GCost || !OpenList.Contains(NeighborNode))
+                if (!OpenList.Contains(NeighborNode) || MoveCost < NeighborNode.FConst)
                 {
                     NeighborNode.GCost = MoveCost;
                     NeighborNode.HCost = GetManhattenDistance(NeighborNode, TargetNode);

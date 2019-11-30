@@ -43,36 +43,10 @@ public class Grid : MonoBehaviour
                     Wall = false;
                 }
 
-                grid[y, x] = new Node(Wall, worldPoint, x, y);
+                grid[x, y] = new Node(Wall, worldPoint, x, y);
             }
         }
     }
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawWireCube(transform.position, new Vector3(GridWorldSize.x, 1, GridWorldSize.y));
-
-        if(grid != null)
-        {
-            foreach(Node node in grid)
-            {
-                if(node.IsWalkable)
-                {
-                    Gizmos.color = Color.white;
-                }
-                else
-                {
-                    Gizmos.color = Color.yellow;
-                }
-                if(FinalPath != null)
-                {
-                    Gizmos.color = Color.red;
-                }
-
-                Gizmos.DrawCube(node.Position, Vector3.one * (nodeDiameter - Distance));
-            }
-        }
-    }
-
     public List<Node> GetNeighboringNodes(Node a_Node)
     {
         List<Node> NeighboringNodes = new List<Node>();
@@ -140,4 +114,37 @@ public class Grid : MonoBehaviour
         return grid[x, y];
 
     }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireCube(transform.position, new Vector3(GridWorldSize.x, 1, GridWorldSize.y));
+
+        if (grid != null)//If the grid is not empty
+        {
+            foreach (Node n in grid)//Loop through every node in the grid
+            {
+                if (n.IsWalkable)//If the current node is a wall node
+                {
+                    Gizmos.color = Color.white;//Set the color of the node
+                }
+                else
+                {
+                    Gizmos.color = Color.yellow;//Set the color of the node
+                }
+
+
+                if (FinalPath != null)//If the final path is not empty
+                {
+                    if (FinalPath.Contains(n))//If the current node is in the final path
+                    {
+                        Gizmos.color = Color.red;//Set the color of that node
+                    }
+
+                }
+
+
+                Gizmos.DrawCube(n.Position, Vector3.one * (nodeDiameter - Distance));//Draw the node at the position of the node.
+            }
+        }
+    }
+
 }
