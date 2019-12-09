@@ -1,4 +1,22 @@
 tree("Root")
-	tree "CalcEnd"
-tree("CalcEnd")
-	GetEndPosition
+	tree "Sheep"
+
+tree("Sheep")
+	sequence
+		while not hasTarget
+			CalculatePosition
+		while not isCaught
+			sequence
+				tree "NextStep"
+
+tree("NextStep")
+	repeat
+		fallback
+			sequence
+				NextStep
+				CheckPath
+				Succeed
+			while not hasTarget
+				sequence
+					Wait 2.0
+					Fail

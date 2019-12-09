@@ -20,11 +20,12 @@ public class Pathfinding : MonoBehaviour
     public void FindPath(Vector3 a_StartPosition, Vector3 a_TargetPosition)
     {
         Debug.Log("Start position: " + a_StartPosition + " / " + a_TargetPosition);
-
+        //a_StartPosition = new Vector3(0, 0, 0);
+        //a_TargetPosition = new Vector3(-15, 0, -15);
         Node StartNode = grid.NodeFromWorldPostion(a_StartPosition);
         Node TargetNode = grid.NodeFromWorldPostion(a_TargetPosition);
 
-        Debug.Log("Startnode: " + StartNode.Position + " / " + TargetNode.Position);
+        Debug.Log("Startnode: " + StartNode.GridX + " / " + StartNode.GridY +  " Startnode Position: " + TargetNode.Position + " /  TargetNode: " + TargetNode.GridX + " / " + TargetNode.GridY +  " Target position: " +  TargetNode.Position);
 
         List<Node> OpenList = new List<Node>();
         HashSet<Node> ClosedList = new HashSet<Node>();

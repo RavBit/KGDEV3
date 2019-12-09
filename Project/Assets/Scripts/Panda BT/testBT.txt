@@ -1,10 +1,2 @@
-tree("SheepGame")
-	tree "GetEndPosition"
-tree("GetEndPosition")
-   sequence
-        Finished()
-			Succeed
-tree("Finished")
-   sequence
-		Finished()
-			Succeed
+tree("Root")
+	Idle

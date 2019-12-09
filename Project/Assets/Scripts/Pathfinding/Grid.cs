@@ -135,7 +135,7 @@ public class Grid : MonoBehaviour
         int x = Mathf.RoundToInt((gridSizeX - 1) * xpoint);
         int y = Mathf.RoundToInt((gridSizeY - 1) * ypoint);
 
-        return grid[y, x];
+        return grid[x, y];
 
     }
     private void OnDrawGizmos()
