@@ -4,6 +4,10 @@ using UnityEngine;
 using Panda;
 public class Wooloo : MonoBehaviour
 {
+    [Header("Canvas Components")]
+    [SerializeField]
+    private GameObject SleepIcon;
+
     public List<Node> Paths;
 
     //Check variables
@@ -13,6 +17,8 @@ public class Wooloo : MonoBehaviour
 
     [Task]
     private bool isCaught = false;
+
+    private bool Sleeping = false;
 
 
     private Vector3 target;
@@ -58,12 +64,6 @@ public class Wooloo : MonoBehaviour
         Debug.Log("Has target: " + hasTarget);
         Task.current.Succeed();
     }
-    [Task]
-    private void Idle()
-    {
-        Debug.Log("Idle");
-        //GetComponent<PandaBehaviour>().Reset();
-    }
 
     [Task]
     private void CheckPath()
@@ -81,4 +81,21 @@ public class Wooloo : MonoBehaviour
         Task.current.Succeed();
     }
 
+    [Task]
+    private void Sleep()
+    {
+        SleepIcon.SetActive(true);
+        Sleeping = true;
+        Debug.Log("He sleep");
+        Task.current.Succeed();
+    }
+
+    [Task]
+    private void WakeUp()
+    {
+        Debug.Log("He no longer sleeps");
+        Sleeping = false;
+        SleepIcon.SetActive(false);
+        Task.current.Succeed();
+    }
 }

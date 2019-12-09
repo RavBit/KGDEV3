@@ -13,10 +13,21 @@ tree("NextStep")
 	repeat
 		fallback
 			sequence
-				NextStep
-				CheckPath
-				Succeed
+				random(70, 10)
+					sequence
+						NextStep
+						CheckPath
+						Succeed
+					sequence
+						tree "Sleep"
+						Succeed
 			while not hasTarget
 				sequence
 					Wait 2.0
 					Fail
+
+tree("Sleep")
+	sequence
+		Sleep
+		Wait 5.0
+		WakeUp
