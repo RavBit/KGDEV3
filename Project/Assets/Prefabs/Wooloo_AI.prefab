@@ -2482,9 +2482,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1280
   Paths: []
-  speed: 20
+  speed: 10
   hasTarget: 0
   isHit: 0
+  isCaught: 0
+  atHerder: 0
 --- !u!65 &8460816224185747940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2496,7 +2498,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.5, y: 1, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7888843564327078183
 GameObject:

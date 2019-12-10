@@ -8,6 +8,8 @@ public class Pathfinding : MonoBehaviour
     private List<Node> finalPath;
     public static Pathfinding instance;
 
+    public Transform PlayerPosition;
+
     void Awake()
     {
         grid = GetComponent<Grid>();

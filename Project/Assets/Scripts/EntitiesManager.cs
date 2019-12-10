@@ -28,8 +28,8 @@ public class EntitiesManager : MonoBehaviour
         int countAmount = 0;
         while (countAmount != _amount)
         {
-            int xPos = Random.Range(-10, 10);
-            int zPos = Random.Range(-10, 10);
+            int xPos = Random.Range(-7, 7);
+            int zPos = Random.Range(-7, 7);
             if (Physics.CheckSphere(new Vector3(xPos, 0, zPos), 0.5f, layerMask))
             {
                 return;

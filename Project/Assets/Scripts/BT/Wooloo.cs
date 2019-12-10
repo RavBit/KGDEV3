@@ -26,8 +26,10 @@ public class Wooloo : MonoBehaviour
 
 
     [Task]
-    private bool isCaught = false;
+    public bool isCaught = false;
 
+    [Task]
+    public bool atHerder = false;
     private bool Sleeping = false;
 
 
@@ -42,11 +44,21 @@ public class Wooloo : MonoBehaviour
         Debug.Log("State: " + GetComponent<PandaBehaviour>().status.ToString());
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("collision: " + collision.gameObject.name);
+        if(collision.gameObject.tag == "Bullet")
+        {
+            Debug.Log("Bullet");
+            isCaught = true;
+        }
+    }
+
     [Task]
     private void CalculatePosition()
     {
         Debug.Log("Calculate Position");
-        target = new Vector3(Random.Range(-15, 15), 0, Random.Range(-15, 15));
+        target = new Vector3(Random.Range(-7, 7), 0, Random.Range(-7, 7));
         CheckPath();
         hasTarget = true;
         Task.current.Succeed();
@@ -66,10 +78,6 @@ public class Wooloo : MonoBehaviour
         transform.LookAt(_target);
         while (transform.position != _target)
         {
-            if(!hasTarget)
-            {
-                break;
-            }
             transform.position = Vector3.Lerp(transform.position, _target, speed * Time.deltaTime);
             return;
         }
@@ -137,7 +145,33 @@ public class Wooloo : MonoBehaviour
     [Task]
     private void Idle()
     {
-
+        Debug.Log("Idle pass");
         Task.current.Succeed();
+    }
+
+    [Task]
+    private void Follow()
+    {
+        target = Pathfinding.instance.PlayerPosition.position;
+        if(transform.position == target)
+        {
+            atHerder = true;
+        }
+        CheckPath();
+        Task.current.Succeed();
+    }
+
+    [Task]
+    private void Released()
+    {
+        isCaught = false;
+        hasTarget = false;
+        Task.current.Succeed();
+    }
+
+    [Task]
+    private void AttachToHerder()
+    {
+        transform.parent = Pathfinding.instance.PlayerPosition;
     }
 }

@@ -2,9 +2,11 @@ tree("Root")
 	tree "Sheep"
 
 tree("Sheep")
-	sequence
+	fallback
 		while not hasTarget
 			CalculatePosition
+		while isCaught
+				tree "Follow"
 		while not isCaught
 			sequence
 				tree "NextStep"
@@ -27,15 +29,22 @@ tree("NextStep")
 				sequence
 					Fail
 
-tree("Sleep")
-	sequence
-		Sleep
-		Wait 5.0
-		WakeUp
-
 tree("Defend")
 	sequence
 		Defend
 		Wait 4.0
 		Continue
 		Succeed
+
+tree("Follow")
+	fallback
+		while atHerder
+			tree "CarryWooloo"
+		sequence
+			Follow
+			NextStep
+			Succeed
+
+tree("CarryWooloo")
+	sequence
+		AttachToHerder
