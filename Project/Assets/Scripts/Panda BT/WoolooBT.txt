@@ -12,6 +12,9 @@ tree("Sheep")
 tree("NextStep")
 	repeat
 		fallback
+			while isHit
+				sequence
+					tree "Defend"
 			sequence
 				random(70, 10)
 					sequence
@@ -19,11 +22,9 @@ tree("NextStep")
 						CheckPath
 						Succeed
 					sequence
-						tree "Sleep"
 						Succeed
 			while not hasTarget
 				sequence
-					Wait 2.0
 					Fail
 
 tree("Sleep")
@@ -31,3 +32,10 @@ tree("Sleep")
 		Sleep
 		Wait 5.0
 		WakeUp
+
+tree("Defend")
+	sequence
+		Defend
+		Wait 4.0
+		Continue
+		Succeed
