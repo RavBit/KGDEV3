@@ -1,0 +1,50 @@
+tree("Root")
+	sequence
+		tree "Idle"
+		tree "FindFood"
+		tree "Roaming"
+
+
+tree("Idle")
+	race
+		CheckStats
+		Idle
+
+		
+tree("Roaming")
+	race
+		while not isRoaming
+			sequence
+				DefineEndPoint
+				CalculatePath
+		while not isFollowingPath
+			while isRoaming
+				ResetValues
+				
+tree("FindFood")
+	race
+		while isHungry		
+			fallback
+				while not SearchFood
+					tree("Starve")
+				while foundFood
+					tree "Moving"
+		while not isHungry
+			Succeed
+
+tree("Moving")
+	race
+		while not isRoaming
+			sequence
+				CalculatePath
+		while not isFollowingPath
+			while isRoaming
+				sequence
+					ResetValues
+					Wait 2.0
+					ResetHunger
+
+tree("Starve")
+	sequence
+		Wait 5.0
+		Fail

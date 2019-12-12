@@ -6,11 +6,12 @@ public class Grid : MonoBehaviour
 {
     public Transform StartPosition;
     public LayerMask WallMask;
+    public LayerMask FoodMask;
     public Vector2 GridWorldSize;
     public float NodeRadius;
     public float Distance;
 
-    private Node[,] grid;
+    public Node[,] grid;
 
     public List<Node> FinalPath;
 
@@ -45,13 +46,18 @@ public class Grid : MonoBehaviour
                 Vector3 worldPoint = bottomLeft + Vector3.right * (x * nodeDiameter + NodeRadius) + Vector3.forward * (y * nodeDiameter + NodeRadius);
 
                 bool Wall = true;
-
+                bool isFood = false;
                 if(Physics.CheckSphere(worldPoint, NodeRadius, WallMask))
                 {
                     Wall = false;
                 }
+                if (Physics.CheckSphere(worldPoint, 0.5f, FoodMask))
+                {
+                    Wall = true;
+                    isFood = true;
+                }
 
-                grid[x, y] = new Node(Wall, worldPoint, x, y);
+                grid[x, y] = new Node(Wall, isFood, worldPoint, x, y);
             }
         }
     }
@@ -65,9 +71,15 @@ public class Grid : MonoBehaviour
             {
                 node.IsWalkable = false;
             }
+            if (Physics.CheckSphere(node.Position, NodeRadius, FoodMask))
+            {
+                node.IsWalkable = true;
+                node.isFood = true;
+            }
             else
             {
                 node.IsWalkable = true;
+                node.isFood = false;
             }
         }
     }
@@ -149,7 +161,11 @@ public class Grid : MonoBehaviour
                 {
                     Gizmos.color = Color.white;//Set the color of the node
                 }
-                else
+                if (n.isFood)//If the current node is a wall node
+                {
+                    Gizmos.color = Color.green;//Set the color of the node
+                }
+                if(!n.IsWalkable && !n.isFood)
                 {
                     Gizmos.color = Color.yellow;//Set the color of the node
                 }

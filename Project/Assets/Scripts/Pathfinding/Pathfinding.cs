@@ -1,22 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Pathfinding : MonoBehaviour
 {
-    private Grid grid;
+    public Grid grid;
     private List<Node> finalPath;
-    public static Pathfinding instance;
 
     public Transform PlayerPosition;
+
 
     void Awake()
     {
         grid = GetComponent<Grid>();
-        if (instance != null)
-            Debug.LogError("More than one Pathfinding in scene");
-        else
-            instance = this;
     }
 
     public void FindPath(Vector3 a_StartPosition, Vector3 a_TargetPosition)
@@ -24,6 +21,7 @@ public class Pathfinding : MonoBehaviour
         Node StartNode = grid.NodeFromWorldPostion(a_StartPosition);
         Node TargetNode = grid.NodeFromWorldPostion(a_TargetPosition);
 
+        Debug.Log("Startnode: " + StartNode.Position + " end note: " + TargetNode.Position);
         List<Node> OpenList = new List<Node>();
         HashSet<Node> ClosedList = new HashSet<Node>();
         OpenList.Add(StartNode);
@@ -46,7 +44,7 @@ public class Pathfinding : MonoBehaviour
             {
                 GetFinalPath(StartNode, TargetNode);
             }
-
+            Debug.Log("Neighbours: " + grid.GetNeighboringNodes(CurrentNode).Count);
             foreach (Node NeighborNode in grid.GetNeighboringNodes(CurrentNode))
             {
                 if(!NeighborNode.IsWalkable || ClosedList.Contains(NeighborNode))
@@ -70,6 +68,7 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
+
     private void GetFinalPath(Node a_StartingNode, Node a_EndNode)
     {
         List<Node> FinalPath = new List<Node>();
@@ -82,9 +81,12 @@ public class Pathfinding : MonoBehaviour
         }
 
         FinalPath.Reverse();
+        FinalPath.Add(a_EndNode);
         finalPath = new List<Node>();
         finalPath = FinalPath;
         grid.FinalPath = FinalPath;
+        PathfindingManager.instance.ReturnPathToEntity(FinalPath);
+        
     }
 
 
@@ -96,6 +98,30 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
+
+    public Node ReturnFoundFood(Vector3 curPosition)
+    {
+        Dictionary<int, Node> foodNodes = new Dictionary<int, Node>();
+        for (int x = 0; x < grid.GridWorldSize.x / 2; x++)
+        {
+            for (int y = 0; y < grid.GridWorldSize.y / 2; y++)
+            {
+                if (grid.grid[x, y].isFood)
+                {
+                    Debug.Log("adding: " + grid.grid[x, y].Position);
+                    int dist = GetManhattenDistance(grid.NodeFromWorldPostion(curPosition), grid.grid[x, y]);
+                    if (!foodNodes.ContainsKey(dist) && dist < 5)
+                        foodNodes.Add(dist, grid.grid[x, y]);
+                }
+            }
+        }
+        if (foodNodes.Count == 0)
+        {
+            return new Node(false, false, Vector3.zero, 0, 0);
+        }
+        Node ClosestFood = foodNodes.OrderBy(kvp => kvp.Key).First().Value;
+        return ClosestFood;
+    }
     int GetManhattenDistance(Node a_NodeA, Node a_NodeB)
     {
         int ix = Mathf.Abs(a_NodeA.GridX - a_NodeB.GridX);
@@ -104,3 +130,4 @@ public class Pathfinding : MonoBehaviour
         return ix + iy;
     }
 }
+

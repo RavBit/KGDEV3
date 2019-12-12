@@ -14,7 +14,7 @@ public class SimpleMovement : MonoBehaviour
     public float speed = 6.0f;
     public float jumpSpeed = 8.0f;
     public float gravity = 20.0f;
-    public GameObject bullet;
+    public GameObject Food;
 
     private Vector3 moveDirection = Vector3.zero;
 
@@ -43,18 +43,22 @@ public class SimpleMovement : MonoBehaviour
             float rotation = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
             transform.rotation = Quaternion.Euler(0, rotation, 0);
         }
-        if (Input.GetMouseButtonDown(0))
+        //if (Input.GetMouseButtonDown(0))
+        //{
+        //    Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);// Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        //    RaycastHit hit;
+        //    if (Physics.Raycast(ray,out hit))
+        //    {
+        //        Vector3 direction = hit.point - transform.position;
+        //        Debug.Log("Direction: " + Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        //        GameObject projectile = (GameObject)Instantiate(bullet, transform.position + transform.forward, Quaternion.identity);
+        //        projectile.GetComponent<Rigidbody>().velocity = direction * 2;
+        //        Destroy(projectile, 4);
+        //    }
+        //}
+        if(Input.GetKeyDown(KeyCode.Space))
         {
-            Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);// Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            RaycastHit hit;
-            if (Physics.Raycast(ray,out hit))
-            {
-                Vector3 direction = hit.point - transform.position;
-                Debug.Log("Direction: " + Camera.main.ScreenToWorldPoint(Input.mousePosition));
-                GameObject projectile = (GameObject)Instantiate(bullet, transform.position + transform.forward, Quaternion.identity);
-                projectile.GetComponent<Rigidbody>().velocity = direction * 2;
-                Destroy(projectile, 4);
-            }
+            GameObject _fooddrop = (GameObject)Instantiate(Food, transform.position, Quaternion.identity);
         }
         // Apply gravity. Gravity is multiplied by deltaTime twice (once here, and once below
         // when the moveDirection is multiplied by deltaTime). This is because gravity should be applied

@@ -12,6 +12,8 @@ public class Node
 
     public bool IsWalkable;
 
+    public bool isFood;
+
     public Vector3 Position;
 
     public Node Parent;
@@ -21,9 +23,10 @@ public class Node
 
     public int FConst { get { return (GCost + HCost); }}
 
-    public Node(bool a_IsWalkable, Vector3 a_Position, int a_GridX, int a_GridY)
+    public Node(bool a_IsWalkable, bool _isFood, Vector3 a_Position, int a_GridX, int a_GridY)
     {
         IsWalkable = a_IsWalkable;
+        isFood = _isFood;
         Position = a_Position;
         GridX = a_GridX;
         GridY = a_GridY;

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Panda;
-public class Wooloo : MonoBehaviour
+public class Wooloo_old : MonoBehaviour
 {
     [Header("Canvas Components")]
     [SerializeField]
@@ -104,8 +104,8 @@ public class Wooloo : MonoBehaviour
             return;
         }
         Paths.Clear();
-        Pathfinding.instance.FindPath(transform.position, target);
-        Paths = Pathfinding.instance.PublicPath;
+        //Pathfinding.instance.FindPath(transform.position, target);
+        //Paths = Pathfinding.instance.PublicPath;
         Task.current.Succeed();
     }
 
@@ -152,7 +152,7 @@ public class Wooloo : MonoBehaviour
     [Task]
     private void Follow()
     {
-        target = Pathfinding.instance.PlayerPosition.position;
+        //target = Pathfinding.instance.PlayerPosition.position;
         if(transform.position == target)
         {
             atHerder = true;
@@ -172,6 +172,6 @@ public class Wooloo : MonoBehaviour
     [Task]
     private void AttachToHerder()
     {
-        transform.parent = Pathfinding.instance.PlayerPosition;
+        //transform.parent = Pathfinding.instance.PlayerPosition;
     }
 }
