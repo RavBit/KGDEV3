@@ -1,15 +1,11 @@
 tree("Root")
 	sequence
 		tree "Idle"
-		tree "FindFood"
-		tree "Roaming"
-
+		tree "CheckSurroundings"
 
 tree("Idle")
 	race
 		CheckStats
-		while isStun
-			ResetValues
 		Idle
 
 		
@@ -22,31 +18,28 @@ tree("Roaming")
 		while not isFollowingPath
 			while isRoaming
 				ResetValues
-				
-tree("FindFood")
-	race
-		while isHungry		
-			fallback
-				while not SearchFood
-					tree("Starve")
-				while foundFood
-					tree "Moving"
-		while not isHungry
-			Succeed
 
 tree("Moving")
 	race
 		while not isRoaming
 			sequence
 				CalculatePath
+				ToggleFoundFood
 		while not isFollowingPath
 			while isRoaming
 				sequence
-					ResetValues
-					Wait 2.0
-					ResetHunger
-
-tree("Starve")
+					EatSheep
+				
+tree("CheckSurroundings")
 	sequence
-		Wait 5.0
-		Succeed
+		fallback
+			while not isRoaming
+				sequence	
+					ToggleSurroundings
+					Wait 2.0
+					ToggleSurroundings
+					TargetSheep
+					tree "Moving"
+			while foundFood
+				tree "Moving"
+			
