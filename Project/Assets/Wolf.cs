@@ -6,7 +6,8 @@ using Panda;
 public class Wolf : MonoBehaviour
 {
     private List<Node> pathpositions;
-
+    [Range(1, 5)]
+    public int Health = 0;
     [Range(1, 10)]
     public float Basespeed = 5;
 
@@ -18,7 +19,12 @@ public class Wolf : MonoBehaviour
     [Task]
     private bool isRoaming = false;
     [Task]
+    public bool checkSurroundings = false;
+    [Task]
     private bool isFollowingPath = false;
+
+    [Task]
+    public bool isHit = false;
 
     [Task]
     private bool foundFood = false;
@@ -30,24 +36,36 @@ public class Wolf : MonoBehaviour
     [Task]
     private void CheckStats()
     {
+        if (Health <= 0)
+        {
+            Destroy(gameObject);
+        }
         Task.current.Succeed();
     }
 
     [Task]
+    private void CheckHit()
+    {
+        if(isHit && foundFood)
+        {
+            Health--;
+            isHit = false;
+            foundFood = false;
+            Task.current.Succeed();
+        }
+        Task.current.Fail();
+    }
+    [Task]
     private void Idle()
     {
-        Debug.Log("Idling");
         Task.current.Succeed();
     }
 
     [Task]
     private void MakeSound()
     {
-        Debug.Log("grrr");
         Task.current.Succeed();
     }
-
-
     [Task]
     private void DefineEndPoint()
     {
@@ -70,6 +88,7 @@ public class Wolf : MonoBehaviour
         startPosition = Vector3.zero;
         endPosition = Vector3.zero;
         isRoaming = false;
+        Task.current.Succeed();
     }
 
     [Task]
@@ -99,7 +118,8 @@ public class Wolf : MonoBehaviour
     [Task]
     private void ToggleFoundFood()
     {
-        foundFood = true;
+        foundFood = !foundFood;
+        Task.current.Succeed();
     }
 
     IEnumerator MoveWolf()
@@ -121,17 +141,17 @@ public class Wolf : MonoBehaviour
                 listcount++;
             }
             transform.LookAt(_target);
-            Debug.Log("Walking: ");
-            transform.position = Vector3.MoveTowards(transform.position, _target, hiddenSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, _target, 1 * Health * Time.deltaTime);
             yield return null;
         }
     }
 
-    bool toggle = false;
+
     [Task]
-    private void ToggleSurroundings()
+    private void ToggleSurroundings(bool toggle)
     {
-        wolfSurroundings.gameObject.SetActive(!toggle);
+        checkSurroundings = toggle;
+        wolfSurroundings.gameObject.SetActive(toggle);
         Task.current.Succeed();
     }
 
@@ -150,6 +170,11 @@ public class Wolf : MonoBehaviour
     [Task]
     private void EatSheep()
     {
+        if(wolfSurroundings == null)
+        {
+            Task.current.Fail();
+            return;
+        }
         Destroy(wolfSurroundings.Sheep);
         Task.current.Succeed();
     }

@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Panda;
+using DG.Tweening;
 public class Sheep : MonoBehaviour
 {
+    public SheepUI SheepUI;
     private List<Node> pathpositions;
 
     [Range(1, 10)]
@@ -36,6 +38,10 @@ public class Sheep : MonoBehaviour
     private void CheckStats()
     {
         isHungry = Energy < 40 ? true : false;
+        if(isHungry)
+        {
+            SheepUI.BlinkHungerIcon(true);
+        }
         Task.current.Succeed();
     }
 
@@ -83,6 +89,7 @@ public class Sheep : MonoBehaviour
     {
         isHungry = false;
         foundFood = false;
+        SheepUI.BlinkHungerIcon(false);
     }
 
     [Task]
@@ -125,7 +132,6 @@ public class Sheep : MonoBehaviour
                 listcount++;
             }
             transform.LookAt(_target);
-            Debug.Log("Walking: ");
             transform.position = Vector3.MoveTowards(transform.position, _target, hiddenSpeed * Time.deltaTime);
             yield return null;
         }
@@ -150,8 +156,14 @@ public class Sheep : MonoBehaviour
     //[Task]
     public void CostEnergy(float amount)
     {
-        Debug.Log("adding amount: " + amount);
         Energy += amount;
         //Task.current.Succeed();
+    }
+
+    [Task]
+    public void Starving()
+    {
+        transform.DOShakeRotation(3, 1, 5, 50, false);
+        Task.current.Succeed();
     }
 }

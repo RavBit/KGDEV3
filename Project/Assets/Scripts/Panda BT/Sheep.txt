@@ -48,5 +48,6 @@ tree("Moving")
 
 tree("Starve")
 	sequence
-		Wait 5.0
+		Starving
+		Wait 3.0
 		Succeed

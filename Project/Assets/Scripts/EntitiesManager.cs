@@ -6,12 +6,18 @@ public class EntitiesManager : MonoBehaviour
 {
     [SerializeField]
     private LayerMask layerMask;
-    [Header("Main Entity that will spawn")]
-    public GameObject Wooloo;
+    [Header("Sheep that will spawn")]
+    public GameObject Sheep;
+    [Header("Wolf that will spawn")]
+    public GameObject Wolf;
 
-    [Header("Amount of Entities that will spawn")]
+    [Header("Amount of Sheeps that will spawn")]
     [Range(1, 100)]
-    public int Amount = 10;
+    public int SheepAmount = 10;
+
+    [Header("Amount of Wolves that will spawn")]
+    [Range(1, 100)]
+    public int WolfAmount = 10;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,10 +26,11 @@ public class EntitiesManager : MonoBehaviour
 
     void Test()
     {
-        SpawnEntities(Amount);
+        SpawnSheep(SheepAmount);
+        SpawnWolf(WolfAmount);
     }
 
-    private void SpawnEntities(int _amount)
+    private void SpawnSheep(int _amount)
     {
         int countAmount = 0;
         while (countAmount != _amount)
@@ -34,7 +41,23 @@ public class EntitiesManager : MonoBehaviour
             {
                 return;
             }
-            Instantiate(Wooloo, new Vector3(xPos, 0, zPos), Quaternion.identity);
+            Instantiate(Sheep, new Vector3(xPos, 0, zPos), Quaternion.identity);
+            countAmount++;
+        }
+    }
+
+    private void SpawnWolf(int _amount)
+    {
+        int countAmount = 0;
+        while (countAmount != _amount)
+        {
+            int xPos = Random.Range(-7, 7);
+            int zPos = Random.Range(-7, 7);
+            if (Physics.CheckSphere(new Vector3(xPos, 0, zPos), 0.5f, layerMask))
+            {
+                return;
+            }
+            Instantiate(Wolf, new Vector3(xPos, 0, zPos), Quaternion.identity);
             countAmount++;
         }
     }

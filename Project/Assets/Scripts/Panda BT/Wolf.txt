@@ -1,6 +1,8 @@
 tree("Root")
 	sequence
 		tree "Idle"
+		tree "Roaming"
+		tree "Scared"
 		tree "CheckSurroundings"
 
 tree("Idle")
@@ -10,36 +12,38 @@ tree("Idle")
 
 		
 tree("Roaming")
-	race
-		while not isRoaming
-			sequence
-				DefineEndPoint
-				CalculatePath
-		while not isFollowingPath
-			while isRoaming
-				ResetValues
+	sequence
+		DefineEndPoint
+		tree("Moving")
 
 tree("Moving")
 	race
 		while not isRoaming
-			sequence
-				CalculatePath
-				ToggleFoundFood
+			CalculatePath
 		while not isFollowingPath
 			while isRoaming
 				sequence
+					ResetValues
 					EatSheep
 				
 tree("CheckSurroundings")
-	sequence
-		fallback
-			while not isRoaming
-				sequence	
-					ToggleSurroundings
-					Wait 2.0
-					ToggleSurroundings
+	while not isRoaming
+		sequence
+			ToggleSurroundings(true)
+			parallel
+				sequence
+					Wait 3.0
+					ToggleSurroundings(false)
 					TargetSheep
+					ToggleFoundFood
 					tree "Moving"
-			while foundFood
-				tree "Moving"
-			
+				not isHit
+
+tree("Scared")
+	fallback
+		while CheckHit
+			sequence
+				ToggleSurroundings(false)
+				ToggleFoundFood
+				ResetValues
+		Succeed

@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 418990246802736624}
   - component: {fileID: 1768322807671173432}
   m_Layer: 5
-  m_Name: SleepIcon
+  m_Name: HungerIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -338,7 +338,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &418990246802736624
 CanvasRenderer:
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 93198acbfa32aea4d9ac524faefbfb35, type: 3}
+  m_Sprite: {fileID: 21300000, guid: be5bbd5b8b904c44891241cc49be2b9e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -525,18 +525,18 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1507735982465580934}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0.675}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0.67}
   m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
   m_Children:
   - {fileID: 817775668993517937}
   m_Father: {fileID: 6558381029862565041}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.851, y: 0.962}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.05, y: 0.962}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2455459355017532365
 Canvas:
@@ -2402,6 +2402,7 @@ GameObject:
   - component: {fileID: 8460816224185747940}
   - component: {fileID: 4140965909556862974}
   - component: {fileID: 5205019948741719592}
+  - component: {fileID: 2162493902647724591}
   m_Layer: 9
   m_Name: Sheep
   m_TagString: Sheep
@@ -2491,9 +2492,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92cb9816d4acead4ab8fbb26ff573613, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Basespeed: 10
-  Energy: 41
+  SheepUI: {fileID: 2162493902647724591}
+  Basespeed: 5
+  Energy: 100
   isHungry: 0
+  isStun: 0
 --- !u!54 &5205019948741719592
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2510,6 +2513,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2162493902647724591
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7881111419138643618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f56cc5bb74d4df84aa2d01a3c76d43aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HungerIcon: {fileID: 1768322807671173432}
 --- !u!1 &7888843564327078183
 GameObject:
   m_ObjectHideFlags: 0
