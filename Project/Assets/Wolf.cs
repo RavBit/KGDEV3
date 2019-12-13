@@ -46,11 +46,10 @@ public class Wolf : MonoBehaviour
     [Task]
     private void CheckHit()
     {
-        if(isHit && foundFood)
+        if(isHit)
         {
             Health--;
             isHit = false;
-            foundFood = false;
             Task.current.Succeed();
         }
         Task.current.Fail();
