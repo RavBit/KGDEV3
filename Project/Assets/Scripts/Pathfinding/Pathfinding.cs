@@ -8,8 +8,6 @@ public class Pathfinding : MonoBehaviour
     public Grid grid;
     private List<Node> finalPath;
 
-    public Transform PlayerPosition;
-
 
     void Awake()
     {
@@ -18,46 +16,55 @@ public class Pathfinding : MonoBehaviour
 
     public void FindPath(Vector3 a_StartPosition, Vector3 a_TargetPosition)
     {
+        //Finds the nodes that are on the worldposition of the requested positions
         Node StartNode = grid.NodeFromWorldPostion(a_StartPosition);
         Node TargetNode = grid.NodeFromWorldPostion(a_TargetPosition);
 
-        Debug.Log("Startnode: " + StartNode.Position + " end note: " + TargetNode.Position);
         List<Node> OpenList = new List<Node>();
         HashSet<Node> ClosedList = new HashSet<Node>();
+
         OpenList.Add(StartNode);
 
 
         while (OpenList.Count > 0)
         {
+            //Loop through list with the first node
             Node CurrentNode = OpenList[0];
-            for (int i = 1; i < OpenList.Count; i++)//Loop through the open list starting from the second object
+            for (int i = 1; i < OpenList.Count; i++)
             {
-                if (OpenList[i].FConst < CurrentNode.FConst || OpenList[i].FConst == CurrentNode.FConst && OpenList[i].HCost < CurrentNode.HCost)//If the f cost of that object is less than or equal to the f cost of the current node
+                //If the F-Cost is less or equal than the current node it's f-cost
+                if (OpenList[i].FConst < CurrentNode.FConst || OpenList[i].FConst == CurrentNode.FConst && OpenList[i].HCost < CurrentNode.HCost)
                 {
-                    CurrentNode = OpenList[i];//Set the current node to that object
+                    CurrentNode = OpenList[i];
                 }
             }
+            //Remove from open list + Add to closed list
             OpenList.Remove(CurrentNode);
             ClosedList.Add(CurrentNode);
 
+            //If reached the target run the next function
             if(CurrentNode == TargetNode)
             {
                 GetFinalPath(StartNode, TargetNode);
             }
-            Debug.Log("Neighbours: " + grid.GetNeighboringNodes(CurrentNode).Count);
+
+            //Check the neighbors of the node
             foreach (Node NeighborNode in grid.GetNeighboringNodes(CurrentNode))
             {
+                //If this object is not a wall and if it has already been checked
                 if(!NeighborNode.IsWalkable || ClosedList.Contains(NeighborNode))
                 {
                     continue;
                 }
+                
+                //Get the Fcost of the neighbor
                 int MoveCost = CurrentNode.GCost + GetManhattenDistance(CurrentNode, NeighborNode);
 
                 if (!OpenList.Contains(NeighborNode) || MoveCost < NeighborNode.FConst)
                 {
                     NeighborNode.GCost = MoveCost;
                     NeighborNode.HCost = GetManhattenDistance(NeighborNode, TargetNode);
-                    NeighborNode.Parent = CurrentNode;
+                    NeighborNode.Parent = CurrentNode; //Parent to retrace in next function
 
                     if(!OpenList.Contains(NeighborNode))
                     {
@@ -68,12 +75,13 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-
+    //Retrace the steps and reverse path
     private void GetFinalPath(Node a_StartingNode, Node a_EndNode)
     {
         List<Node> FinalPath = new List<Node>();
         Node CurrentNode = a_EndNode;
 
+        //Retrace with parents to the start position
         while(CurrentNode != a_StartingNode)
         {
             FinalPath.Add(CurrentNode);
@@ -81,24 +89,17 @@ public class Pathfinding : MonoBehaviour
         }
 
         FinalPath.Reverse();
+        //Add target to the list to make sure the player reaches it's target (not only the path)
         FinalPath.Add(a_EndNode);
         finalPath = new List<Node>();
         finalPath = FinalPath;
         grid.FinalPath = FinalPath;
+        //Return to the entity with the final path
         PathfindingManager.instance.ReturnPathToEntity(FinalPath);
         
     }
-
-
-    public List<Node> PublicPath
-    {
-        get
-        {
-            return finalPath;
-        }
-    }
-
-
+    
+    //Create a dictionary that will return the closest food to the Sheep
     public Node ReturnFoundFood(Vector3 curPosition)
     {
         Dictionary<int, Node> foodNodes = new Dictionary<int, Node>();
@@ -108,13 +109,14 @@ public class Pathfinding : MonoBehaviour
             {
                 if (grid.grid[x, y].isFood)
                 {
-                    Debug.Log("adding: " + grid.grid[x, y].Position);
+                    //Calculate GetManhattenDistance between the nodes
                     int dist = GetManhattenDistance(grid.NodeFromWorldPostion(curPosition), grid.grid[x, y]);
                     if (!foodNodes.ContainsKey(dist) && dist < 5)
                         foodNodes.Add(dist, grid.grid[x, y]);
                 }
             }
         }
+        //If there is no food return an empty node
         if (foodNodes.Count == 0)
         {
             return new Node(false, false, Vector3.zero, 0, 0);

@@ -33,14 +33,14 @@ public class Sheep : MonoBehaviour
     private Vector3 startPosition;
     private Vector3 endPosition;
 
-
+    //Check current stats of the sheep
     [Task]
     private void CheckStats()
     {
         isHungry = Energy < 40 ? true : false;
-        if(isHungry)
+        if(Energy < 0)
         {
-            SheepUI.BlinkHungerIcon(true);
+            Destroy(gameObject);
         }
         Task.current.Succeed();
     }
@@ -48,21 +48,15 @@ public class Sheep : MonoBehaviour
     [Task]
     private void Idle()
     {
-        Debug.Log("Idling");
+        GetComponent<AudioSource>().Stop();
+        GetComponent<AudioSource>().Play();
         Task.current.Succeed();
     }
-
-    [Task]
-    private void MakeSound()
-    {
-        Debug.Log("BAAHHH");
-        Task.current.Succeed();
-    }
-
 
     [Task]
     private void DefineEndPoint()
     {
+        //Defines the endpoint for the pathfinding. This will be randomly on the grid
         hiddenSpeed = (Basespeed * (Energy * 0.01f));
         startPosition = transform.position;
         while (true)
@@ -89,7 +83,6 @@ public class Sheep : MonoBehaviour
     {
         isHungry = false;
         foundFood = false;
-        SheepUI.BlinkHungerIcon(false);
     }
 
     [Task]
@@ -100,7 +93,7 @@ public class Sheep : MonoBehaviour
         Task.current.Succeed();
     }
 
-
+    //Function gets called after action got path returned. 
     public void StartMovingTarget(List<Node> positions)
     {
         pathpositions = new List<Node>();
@@ -112,6 +105,7 @@ public class Sheep : MonoBehaviour
 
     }
 
+    // Ienumerator to move the sheep smoothly
     IEnumerator MoveSheep()
     {
         Vector3 _target;
@@ -121,6 +115,7 @@ public class Sheep : MonoBehaviour
         {
             if(listcount >= pathpositions.Count || isStun)
             {
+                //Sheep will always use energy while walking
                 CostEnergy(-(UnityEngine.Random.Range(1.0f, 2.5f) * listcount));
                 pathpositions.Clear();
                 isFollowingPath = false;
@@ -137,6 +132,8 @@ public class Sheep : MonoBehaviour
         }
     }
 
+
+    // Will run a function that will return a Tuple. With food data or fail the task
     [Task]
     private void SearchFood()
     {
@@ -153,17 +150,23 @@ public class Sheep : MonoBehaviour
         }
     }
 
-    //[Task]
+    // Energy costs manager.
     public void CostEnergy(float amount)
     {
         Energy += amount;
-        //Task.current.Succeed();
     }
 
     [Task]
     public void Starving()
     {
         transform.DOShakeRotation(3, 1, 5, 50, false);
+        Task.current.Succeed();
+    }
+
+    [Task]
+    public void ToggleHungerUI(bool toggle)
+    {
+        SheepUI.BlinkHungerIcon(toggle);
         Task.current.Succeed();
     }
 }

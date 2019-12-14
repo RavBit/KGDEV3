@@ -6,12 +6,15 @@ tree("Root")
 
 
 tree("Idle")
-	race
-		CheckStats
-		while isStun
-			ResetValues
-		Idle
-
+	sequence
+		race
+			CheckStats
+			while isStun
+				ResetValues
+		random(1, 500)
+			Idle
+			sequence
+				Succeed
 		
 tree("Roaming")
 	race
@@ -25,14 +28,18 @@ tree("Roaming")
 				
 tree("FindFood")
 	race
-		while isHungry		
-			fallback
-				while not SearchFood
-					tree("Starve")
-				while foundFood
-					tree "Moving"
+		while isHungry
+			sequence
+				ToggleHungerUI(true)
+				fallback
+					while not SearchFood
+						tree("Starve")
+					while foundFood
+						tree "Moving"
 		while not isHungry
-			Succeed
+			sequence
+				ToggleHungerUI(false)
+				Succeed
 
 tree("Moving")
 	race

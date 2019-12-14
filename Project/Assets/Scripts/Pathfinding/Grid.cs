@@ -29,12 +29,14 @@ public class Grid : MonoBehaviour
 
     private void Update()
     {
+        // Update the grid on changes
         if(grid != null)
         {
             UpdateGrid();
         }
     }
 
+    // Create a grid with the following obstacles
     private void CreateGrid()
     {
         grid = new Node[gridSizeX, gridSizeY];
@@ -47,22 +49,23 @@ public class Grid : MonoBehaviour
 
                 bool Wall = true;
                 bool isFood = false;
+                //Check if there's a wall
                 if(Physics.CheckSphere(worldPoint, NodeRadius, WallMask))
                 {
                     Wall = false;
                 }
+                //Check if there's food
                 if (Physics.CheckSphere(worldPoint, 0.5f, FoodMask))
                 {
                     Wall = true;
                     isFood = true;
                 }
-
                 grid[x, y] = new Node(Wall, isFood, worldPoint, x, y);
             }
         }
     }
 
-
+    //Check the grid data. If the node is changed it will be changed in this function
     private void UpdateGrid()
     {
         foreach (Node node in grid)
@@ -83,6 +86,8 @@ public class Grid : MonoBehaviour
             }
         }
     }
+
+    // Get neighbor nodes of the current node
     public List<Node> GetNeighboringNodes(Node a_Node)
     {
         List<Node> NeighboringNodes = new List<Node>();
@@ -136,6 +141,8 @@ public class Grid : MonoBehaviour
         return NeighboringNodes;
 
     }
+
+    // Returns the worldposition of the nodes
     public Node NodeFromWorldPostion(Vector3 a_WorldPosition)
     {
         float xpoint = ((a_WorldPosition.x + GridWorldSize.x / 2) / GridWorldSize.x);
@@ -150,38 +157,40 @@ public class Grid : MonoBehaviour
         return grid[x, y];
 
     }
+
+    //Gizmo for debugging (red very buggy due multiple paths created)
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position, new Vector3(GridWorldSize.x, 1, GridWorldSize.y));
-        if (grid != null)//If the grid is not empty
+        if (grid != null)
         {
-            foreach (Node n in grid)//Loop through every node in the grid
+            foreach (Node n in grid)
             {
-                if (n.IsWalkable)//If the current node is a wall node
+                if (n.IsWalkable)
                 {
-                    Gizmos.color = Color.white;//Set the color of the node
+                    Gizmos.color = Color.white;
                 }
-                if (n.isFood)//If the current node is a wall node
+                if (n.isFood)
                 {
-                    Gizmos.color = Color.green;//Set the color of the node
+                    Gizmos.color = Color.green;
                 }
                 if(!n.IsWalkable && !n.isFood)
                 {
-                    Gizmos.color = Color.yellow;//Set the color of the node
+                    Gizmos.color = Color.yellow;
                 }
 
 
-                if (FinalPath != null)//If the final path is not empty
+                if (FinalPath != null)
                 {
-                    if (FinalPath.Contains(n))//If the current node is in the final path
+                    if (FinalPath.Contains(n))
                     {
-                        Gizmos.color = Color.red;//Set the color of that node
+                        Gizmos.color = Color.red;
                     }
 
                 }
 
 
-                Gizmos.DrawCube(n.Position, Vector3.one * (nodeDiameter - Distance));//Draw the node at the position of the node.
+                Gizmos.DrawCube(n.Position, Vector3.one * (nodeDiameter - Distance));
             }
         }
     }
